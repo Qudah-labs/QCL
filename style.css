@@ -81,3 +81,48 @@ footer {
   margin: 0 auto;
   display: block;
 }
+
+section {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+section h2 {
+  margin-bottom: 15px;
+  font-size: 24px;
+  color: #0d3053;
+}
+
+section p, section ul {
+  font-size: 18px;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto;
+  color: #333;
+}
+
+section ul {
+  list-style: none;
+  padding: 0;
+}
+
+section ul li {
+  margin: 8px 0;
+}
+
+#news {
+  text-align: center;
+  background-color: #f0f0f0;
+  padding: 30px 15px;
+  direction: rtl;
+}
+
+#news iframe {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  border-radius: 10px;
+}
