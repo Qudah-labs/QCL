@@ -39,18 +39,17 @@ section {
 }
 #slider {
   display: flex;
-  gap: 10px;
+  gap: 15px;
   justify-content: center;
+  flex-wrap: wrap;
   padding: 20px;
 }
-.slide {
-  background: #ccc;
-  width: 100px;
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
+.slide img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
 footer {
   background: #333;
