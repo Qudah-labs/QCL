@@ -138,5 +138,39 @@
       slides[currentSlide].style.display = "block";
     }, 3000);
   </script>
+
+
+<!-- زر تثبيت التطبيق -->
+<section id="install-app" style="text-align: center; padding: 30px; background-color: #f2f2f2;">
+  <h2>📱 هل ترغب بتثبيت التطبيق؟</h2>
+  <p>اضغط على الزر أدناه لتثبيت تطبيق مختبرات القضـــاة على جهازك.</p>
+  <button id="installBtn" style="padding: 10px 20px; font-size: 16px;">تثبيت التطبيق</button>
+</section>
+
+<script>
+  let deferredPrompt;
+  const installBtn = document.getElementById('installBtn');
+  installBtn.style.display = 'none';
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    installBtn.style.display = 'inline-block';
+
+    installBtn.addEventListener('click', () => {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('تم تثبيت التطبيق');
+        } else {
+          console.log('تم رفض التثبيت');
+        }
+        deferredPrompt = null;
+      });
+    });
+  });
+</script>
+
+  
 </body>
 </html>
