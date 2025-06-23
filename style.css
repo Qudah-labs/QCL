@@ -35,12 +35,6 @@ nav a {
 nav a:hover {
   text-decoration: underline;
 }
-nav {
-  position: sticky;
-  top: 0;
-  background: #e0e0e0;
-  z-index: 1000;
-}
 main {
   padding: 0;
 }
@@ -131,4 +125,14 @@ section ul li {
   margin: 0 auto;
   max-width: 100%;
   border-radius: 10px;
+}
+
+@media (max-width: 600px) {
+  .slide {
+    height: 250px;
+  }
+
+  section h2 {
+    font-size: 20px;
+  }
 }
