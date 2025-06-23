@@ -22,6 +22,7 @@ nav {
   gap: 15px;
   background: #e0e0e0;
   padding: 10px;
+  flex-wrap: wrap;
 }
 nav a {
   color: #0d3053;
@@ -42,17 +43,23 @@ section {
 }
 #slider {
   display: flex;
-  gap: 15px;
   justify-content: center;
-  flex-wrap: wrap;
-  padding: 20px;
+  align-items: center;
+  background-color: #f0f0f0;
+  padding: 30px 0;
 }
-.slide img {
+.slider-container {
+  width: 90%;
+  max-width: 800px;
+  position: relative;
+}
+.slide {
+  display: none;
   width: 100%;
-  max-width: 300px;
-  height: auto;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  height: 450px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 footer {
   background: #333;
