@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar">
 <head>
@@ -17,87 +18,42 @@
   </header>
 
   <nav>
+    <a href="#slider">الصور</a>
     <a href="#about">من نحن</a>
-    <a href="#vision">الرؤية</a>
-    <a href="#mission">الرسالة</a>
     <a href="#services">الخدمات</a>
-    <a href="#insurances">شركات التأمين</a>
     <a href="#contact">تواصل معنا</a>
-    <a href="#links">روابط</a>
   </nav>
 
   <main>
     <section id="slider">
-      <div class="slide"><img src="slider1.png" alt="صورة 1"></div>
-      <div class="slide"><img src="slider2.png" alt="صورة 2"></div>
-      <div class="slide"><img src="slider3.png" alt="صورة 3"></div>
+      <div class="slider-container">
+        <img class="slide" src="slider1.png" alt="Slider 1">
+        <img class="slide" src="slider2.png" alt="Slider 2">
+        <img class="slide" src="slider3.png" alt="Slider 3">
+        <img class="slide" src="slider4.png" alt="Slider 4">
+        <img class="slide" src="slider5.png" alt="Slider 5">
+        <img class="slide" src="slider6.png" alt="Slider 6">
+      </div>
     </section>
 
     <section id="about">
       <h2>من نحن</h2>
-      <p> مختبر متخصص في تقديم خدمات التحاليل الطبية بدقة واحترافية، مع الالتزام بأعلى معايير الجودة وسرعة الإنجاز.</p>
+      <p>مختبر متخصص في تقديم خدمات التحاليل الطبية بدقة واحترافية.</p>
     </section>
 
-<section id="vision">
-      <h2>الرؤية</h2>
-      <p>أن تكون مجموعة مختبرات القضـــاة التخصصية صرحاً رائداً ومتميزاً يفضله المراجعون في طلب الرعاية الصحية.</p>
-    </section>
-
-    <section id="mission">
-      <h2>الرسالة</h2>
-      <p>تقديم الرعايه الصحيه ذات الجوده العاليه للمراجعين ، ونشر الوعي الصحي بينهم . والمساهمه في اعداد الكوادر المتخصصة في ذلك .</p>
-    </section>
-    
     <section id="services">
       <h2>خدماتنا</h2>
       <ul>
         <li>فحوصات الدم الشاملة</li>
-        <li>فحوصات الحساسية</li>
+        <li>تحاليل الحساسية</li>
         <li>فحوصات ما قبل الزواج</li>
-        <li>فحوصات الأنسجة والأورام</li>
-        <li>فحوصات الجينات</li>
-        <li>دورات التعليم المستمر</li>
+        <li>تحاليل الأنسجة والجينات</li>
       </ul>
     </section>
 
-<section id="insurances">
-      <h2>شركات التأمين</h2>
-      <ul>
-        <li>جامعة اليرموك</li>
-        <li>جامعة البلقاء</li>
-        <li>جامعة عجلون الوطنية</li>
-        <li>نقابة المهندسين</li>
-        <li>نقابة المحامين</li>
-        <li>نقابة أطباء الأسنان</li>
-        <li>نات هيلث</li>
-        <li>ميد سيرفس</li>
-        <li>الشرق العربي للتأمين</li>
-        <li>العربية الأوروبية</li>
-        <li>ميديكسا</li>
-        <li>أومني كير</li>
-        <li>غلوب ميد</li>
-      </ul>
-    </section>
-
-    
     <section id="contact">
       <h2>تواصل معنا</h2>
-      <p>بإمكانكم التواصل معنا عبر صفحاتنا على وسائل التواصل الاجتماعي أو البريد الإلكتروني:</p>
-      <ul>
-        <li><a href="https://www.facebook.com/Cons.Labs" target="_blank">صفحة الفيسبوك</a></li>
-        <li><a href="https://www.instagram.com/qudah.labs?utm_source=ig_web_button_share_sheet&igsh=azBoZWZldXIzZGMw" target="_blank">حساب الإنستاغرام</a></li>
-        <li><a href="https://www.youtube.com/@QCL2025" target="_blank">قناتنا على اليوتيوب</a></li>
-        <li><a href="https://wa.me/962799970090" target="_blank">Whatsapp</a></li>
-        <li><a href="mailto:ceo@labs.qudah.com">ceo@labs.qudah.com</a></li>
-      </ul>
-    </section>
-
-    <section id="links">
-      <h2>روابط مهمة</h2>
-      <ul>
-        <li><a href="https://wa.me/962799970090" target="_blank">خدمة السحب المنزلي</a></li>
-        <li><a href="https://wa.me/962799970090" target="_blank">نتائج الفحوصات المخبرية</a></li>
-      </ul>
+      <p>info@qudahlabs.com</p>
     </section>
   </main>
 
@@ -106,9 +62,17 @@
   </footer>
 
   <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js');
-    }
+    let currentSlide = 0;
+    const slides = document.querySelectorAll(".slide");
+    slides.forEach((img, index) => {
+      img.style.display = index === 0 ? "block" : "none";
+    });
+
+    setInterval(() => {
+      slides[currentSlide].style.display = "none";
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].style.display = "block";
+    }, 3000);
   </script>
 </body>
 </html>
