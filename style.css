@@ -1,0 +1,30 @@
+
+body {
+  font-family: sans-serif;
+  direction: rtl;
+  margin: 0;
+  background: #f4f4f4;
+  color: #333;
+}
+header {
+  background: #0d3053;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+main {
+  padding: 20px;
+}
+a {
+  color: #0d3053;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+footer {
+  background: #333;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
