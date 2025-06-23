@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <title>قراءة نتائج الفحوصات</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+    h1 {
+      color: #0d3053;
+      margin-bottom: 20px;
+    }
+    #reader {
+      width: 300px;
+      margin: 0 auto;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      color: green;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📷 قراءة نتائج الفحوصات</h1>
+  <p>يرجى توجيه الكاميرا نحو رمز QR الموجود على بطاقة المراجع.</p>
+
+  <div id="reader"></div>
+  <div id="result"></div>
+
+  <script>
+    function onScanSuccess(decodedText, decodedResult) {
+      document.getElementById('result').innerHTML = "✅ تم قراءة الرابط: " + decodedText;
+      // Redirect directly to the scanned full URL
+      window.location.href = decodedText;
+    }
+
+    function onScanFailure(error) {
+      // يمكن تركها فارغة أو طباعة خطأ
+    }
+
+    let html5QrcodeScanner = new Html5QrcodeScanner(
+      "reader", { fps: 10, qrbox: 250 });
+    html5QrcodeScanner.render(onScanSuccess, onScanFailure);
+  </script>
+
+</body>
+</html>
