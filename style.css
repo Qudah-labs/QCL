@@ -26,11 +26,12 @@ header {
 
 /* Logo */
 .logo {
-  width: 150px;
-  height: auto;
-  object-fit: contain;
+height: 80px; /* اضبط الارتفاع حسب الصورة الفعلية */
+  width: auto;
   display: block;
   margin: 0 auto 15px auto;
+  object-fit: contain;
+  max-width: 90%;
 }
 
 /* Navigation Bar */
