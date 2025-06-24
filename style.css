@@ -26,7 +26,7 @@ header {
 
 /* Logo */
 .logo {
-height: 80px; /* اضبط الارتفاع حسب الصورة الفعلية */
+height: 150px; /* اضبط الارتفاع حسب الصورة الفعلية */
   width: auto;
   display: block;
   margin: 0 auto 15px auto;
