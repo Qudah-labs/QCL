@@ -5,4 +5,15 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   base: '/QCL/',
   plugins: [react()],
+  server: {
+    fs: {
+      strict: false,
+    },
+  },
+  resolve: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+  },
+  optimizeDeps: {
+    include: ['react', 'react-dom'],
+  },
 });
