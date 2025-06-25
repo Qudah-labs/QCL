@@ -3,12 +3,12 @@ import { useState, useEffect, useRef } from 'react';
 import React from 'react';
 
 const sliderImages = [
-  '/slider1.png',
-  '/slider2.png',
-  '/slider3.png',
-  '/slider4.png',
-  '/slider5.png',
-  '/slider6.png',
+  `${import.meta.env.BASE_URL}slider1.png`,
+  `${import.meta.env.BASE_URL}slider2.png`,
+  `${import.meta.env.BASE_URL}slider3.png`,
+  `${import.meta.env.BASE_URL}slider4.png`,
+  `${import.meta.env.BASE_URL}slider5.png`,
+  `${import.meta.env.BASE_URL}slider6.png`,
 ];
 
 function App() {
@@ -76,7 +76,7 @@ function App() {
       <section className="hero-section">
         <div className="hero-bg" />
         <div className="hero-content">
-          <img src="/icon.png" alt="logo" className="logo hero-logo" style={{background: '#fff', borderRadius: '50%', boxShadow: '0 4px 24px #0d305344', padding: '12px', marginBottom: '24px', height: '140px'}} />
+          <img src={`${import.meta.env.BASE_URL}icon.png`} alt="logo" className="logo hero-logo" style={{background: '#fff', borderRadius: '50%', boxShadow: '0 4px 24px #0d305344', padding: '12px', marginBottom: '24px', height: '140px'}} />
           <h1 className="hero-title" style={{fontSize: '3.2em', fontWeight: '900', margin: '0 0 12px 0', color: '#fff', letterSpacing: '2px', textShadow: '0 2px 8px #0d305388'}}>مختبرات القضـــاة التخصصية</h1>
           <p className="hero-subtitle" style={{fontSize: '1.4em', color: '#e0e7ef', marginBottom: '32px', fontWeight: '500', letterSpacing: '1px'}}>Qudah Consulting Laboratories</p>
         </div>
