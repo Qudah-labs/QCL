@@ -13,7 +13,7 @@ A modern, RTL-friendly React web application for Qudah Consulting Laboratories, 
 - **Branch Locations**: Contact info and working hours for all branches
 - **Quick Links**: Access to lab results, home sampling, and portals
 - **Contact & Social**: Facebook, Instagram, YouTube, WhatsApp, and email
-- **QR Code Results Page**: `/QCL/qr-scan-full-url.html` for scanning and redirecting to lab results
+- **QR Code Results Scanner**: Integrated modal for scanning QR codes and redirecting to lab results
 - **PWA-ready**: Includes manifest for installable experience
 
 ## Project Structure
@@ -58,7 +58,7 @@ The production-ready files will be in the `dist/` directory.
 ## Special Pages
 
 - **Lab Results QR Scanner:**  
-  Open [`/QCL/qr-scan-full-url.html`](qr-scan-full-url.html) to scan a QR code and be redirected to the full results page.
+  Click "📋 نتائج الفحوصات المخبرية" in the Important Links section to open the integrated QR scanner modal.
 
 ## License
 

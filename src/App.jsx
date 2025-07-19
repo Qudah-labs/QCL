@@ -2,6 +2,143 @@ import './App.css';
 import { useState, useEffect, useRef } from 'react';
 import React from 'react';
 
+// QR Scanner Modal Component
+function QRScannerModal({ isOpen, onClose }) {
+  const [isScanning, setIsScanning] = useState(false);
+  const [result, setResult] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
+  const scannerRef = useRef(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      // Load the QR scanner library
+      const script = document.createElement('script');
+      script.src = 'https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js';
+      script.onload = () => {
+        setTimeout(() => {
+          initScanner();
+        }, 500);
+      };
+      script.onerror = () => {
+        setError('فشل في تحميل مكتبة QR Scanner');
+      };
+      document.head.appendChild(script);
+
+      return () => {
+        document.head.removeChild(script);
+      };
+    }
+  }, [isOpen]);
+
+  const initScanner = () => {
+    try {
+      if (typeof Html5QrcodeScanner === 'undefined') {
+        setError('مكتبة QR Scanner غير متوفرة');
+        return;
+      }
+
+      setIsScanning(true);
+      setError('');
+
+      scannerRef.current = new Html5QrcodeScanner(
+        "qr-reader",
+        {
+          fps: 10,
+          qrbox: { width: 250, height: 250 },
+          aspectRatio: 1.0
+        }
+      );
+
+      scannerRef.current.render(onScanSuccess, onScanFailure);
+    } catch (err) {
+      setError('فشل في تشغيل الكاميرا. يرجى التأكد من السماح بالوصول للكاميرا.');
+      console.error('Scanner init error:', err);
+    }
+  };
+
+  const onScanSuccess = (decodedText, decodedResult) => {
+    try {
+      const url = new URL(decodedText);
+      if (url.protocol === 'http:' || url.protocol === 'https:') {
+        setIsLoading(true);
+        setResult('✅ تم قراءة الرابط بنجاح! جاري التوجيه...');
+        
+        setTimeout(() => {
+          window.open(decodedText, '_blank', 'noopener,noreferrer');
+          setIsLoading(false);
+          onClose();
+        }, 1500);
+      } else {
+        throw new Error('Invalid URL protocol');
+      }
+    } catch (error) {
+      setError('❌ الرابط غير صالح. يرجى التأكد من رمز QR.');
+      setIsScanning(false);
+    }
+  };
+
+  const onScanFailure = (error) => {
+    // Handle scan failure silently
+    console.log('Scan failed:', error);
+  };
+
+  const handleClose = () => {
+    if (scannerRef.current) {
+      scannerRef.current.clear();
+    }
+    setIsScanning(false);
+    setResult('');
+    setError('');
+    setIsLoading(false);
+    onClose();
+  };
+
+  if (!isOpen) return null;
+
+  return (
+    <div className="qr-modal-overlay" onClick={handleClose}>
+      <div className="qr-modal" onClick={(e) => e.stopPropagation()}>
+        <div className="qr-modal-header">
+          <h2>📋 نتائج الفحوصات المخبرية</h2>
+          <button className="qr-modal-close" onClick={handleClose}>
+            ✕
+          </button>
+        </div>
+        
+        <div className="qr-modal-content">
+          <p className="qr-instructions">
+            قم بتوجيه الكاميرا نحو رمز QR الموجود على بطاقة المراجع لقراءة النتائج
+          </p>
+          
+          <div className="qr-scanner-container">
+            <div id="qr-reader"></div>
+          </div>
+
+          {error && (
+            <div className="qr-error">
+              {error}
+            </div>
+          )}
+
+          {result && (
+            <div className="qr-success">
+              {result}
+            </div>
+          )}
+
+          {isLoading && (
+            <div className="qr-loading">
+              <span>جاري تحميل النتائج...</span>
+              <div className="qr-spinner"></div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 const sliderImages = [
   `${import.meta.env.BASE_URL}slider1.png`,
   `${import.meta.env.BASE_URL}slider2.png`,
@@ -18,6 +155,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isVideoMuted, setIsVideoMuted] = useState(true);
+  const [isQRModalOpen, setIsQRModalOpen] = useState(false);
   const videoRef = useRef(null);
   const totalSlides = sliderImages.length;
   const newsStyle = 'split';
@@ -222,7 +360,13 @@ function App() {
                   </a>
                 </div>
                 <div className="important-link">
-                  <a href="/QCL/qr-scan-full-url.html">
+                  <a 
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setIsQRModalOpen(true);
+                    }}
+                  >
                     <span role="img" aria-label="Lab Results">📋</span> نتائج الفحوصات المخبرية
                   </a>
                 </div>
@@ -268,7 +412,6 @@ function App() {
               <li><button onClick={() => scrollToSection('services')} className="nav-link">خدماتنا</button></li>
               <li><button onClick={() => scrollToSection('insurances')} className="nav-link">شركات التأمين</button></li>
               <li><button onClick={() => scrollToSection('contact')} className="nav-link">تواصل معنا</button></li>
-              <li><a href="/QCL/qr-scan-full-url.html" className="nav-link" style={{textDecoration: 'none'}}>📋 النتائج</a></li>
             </ul>
           </nav>
 
@@ -483,6 +626,12 @@ function App() {
           <p>© 2025 مختبرات القضـــاة التخصصية - جميع الحقوق محفوظة</p>
         </div>
       </footer>
+      
+      {/* QR Scanner Modal */}
+      <QRScannerModal 
+        isOpen={isQRModalOpen} 
+        onClose={() => setIsQRModalOpen(false)} 
+      />
     </div>
   );
 }
