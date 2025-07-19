@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>قراءة نتائج الفحوصات - مختبرات القضـــاة التخصصية</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="قراءة نتائج الفحوصات المخبرية عبر رمز QR - مختبرات القضـــاة التخصصية" />
+  <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+  <style>
+    :root {
+      --navy: #0d3053;
+      --silver: #c0c0c0;
+      --gray-light: #f5f5f5;
+      --gray-dark: #333;
+      --gray-text: #444;
+      --white: #ffffff;
+      --accent: #c0c0c0;
+      --primary-gradient: linear-gradient(135deg, #0d3053 0%, #1a4a7a 100%);
+      --secondary-gradient: linear-gradient(135deg, #c0c0c0 0%, #e0e0e0 100%);
+      --shadow-light: 0 2px 8px rgba(13, 48, 83, 0.1);
+      --shadow-medium: 0 4px 16px rgba(13, 48, 83, 0.15);
+      --shadow-heavy: 0 8px 32px rgba(13, 48, 83, 0.2);
+      --border-radius: 12px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', 'Cairo', 'Arial', sans-serif;
+      direction: rtl;
+      background: var(--primary-gradient);
+      color: var(--gray-dark);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(13, 48, 83, 0.9) 0%, rgba(26, 74, 122, 0.8) 100%);
+      z-index: -1;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 24px;
+      box-shadow: var(--shadow-heavy);
+      padding: 40px;
+      max-width: 500px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .header {
+      margin-bottom: 30px;
+    }
+
+    .logo {
+      height: 80px;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 4px 16px rgba(13, 48, 83, 0.3));
+      transition: var(--transition);
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    .title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      color: var(--gray-text);
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .qr-container {
+      background: #fff;
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 30px;
+      box-shadow: var(--shadow-medium);
+      border: 2px solid rgba(13, 48, 83, 0.1);
+      transition: var(--transition);
+      min-height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .qr-container:hover {
+      box-shadow: var(--shadow-heavy);
+      transform: translateY(-2px);
+    }
+
+    #reader {
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .camera-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      color: var(--gray-text);
+      font-size: 1.1rem;
+    }
+
+    .camera-icon {
+      font-size: 4rem;
+      color: var(--navy);
+      opacity: 0.7;
+    }
+
+    .start-camera-btn {
+      background: var(--primary-gradient);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: var(--border-radius);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .start-camera-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-heavy);
+    }
+
+    .result {
+      background: linear-gradient(135deg, #25D366 0%, #1ebe5d 100%);
+      color: white;
+      padding: 15px 20px;
+      border-radius: 12px;
+      margin: 20px 0;
+      font-weight: 600;
+      box-shadow: var(--shadow-medium);
+      display: none;
+      animation: fadeInUp 0.5s ease-out;
+    }
+
+    .result.show {
+      display: block;
+    }
+
+    .result.error {
+      background: linear-gradient(135deg, #ff4757 0%, #ff3742 100%);
+    }
+
+    .loading {
+      background: linear-gradient(135deg, #ff9500 0%, #ff8000 100%);
+      color: white;
+      padding: 15px 20px;
+      border-radius: 12px;
+      margin: 20px 0;
+      font-weight: 600;
+      box-shadow: var(--shadow-medium);
+      display: none;
+      animation: pulse 2s infinite;
+    }
+
+    .loading.show {
+      display: block;
+    }
+
+    .back-button {
+      background: var(--primary-gradient);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: var(--border-radius);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 20px;
+      box-shadow: var(--shadow-medium);
+    }
+
+    .back-button:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-heavy);
+    }
+
+    .instructions {
+      background: rgba(13, 48, 83, 0.05);
+      border: 1px solid rgba(13, 48, 83, 0.1);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px 0;
+      text-align: right;
+    }
+
+    .instructions h3 {
+      color: var(--navy);
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    .instructions ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .instructions li {
+      margin: 8px 0;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(13, 48, 83, 0.1);
+      color: var(--gray-text);
+    }
+
+    .instructions li:last-child {
+      border-bottom: none;
+    }
+
+    .instructions li::before {
+      content: '📋';
+      margin-left: 8px;
+    }
+
+    .footer {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(13, 48, 83, 0.1);
+      color: var(--gray-text);
+      font-size: 0.9rem;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.7;
+      }
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-top: 2px solid white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-left: 10px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .container {
+        padding: 30px 20px;
+        margin: 10px;
+        border-radius: 16px;
+      }
+
+      .title {
+        font-size: 1.5rem;
+      }
+
+      .subtitle {
+        font-size: 1rem;
+      }
+
+      .logo {
+        height: 60px;
+      }
+
+      #reader {
+        max-width: 250px;
+      }
+
+      .qr-container {
+        min-height: 250px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+
+      .container {
+        padding: 20px 15px;
+        border-radius: 12px;
+      }
+
+      .title {
+        font-size: 1.3rem;
+      }
+
+      .subtitle {
+        font-size: 0.9rem;
+      }
+
+      .logo {
+        height: 50px;
+      }
+
+      #reader {
+        max-width: 200px;
+      }
+
+      .qr-container {
+        padding: 15px;
+        min-height: 200px;
+      }
+    }
+
+    /* Accessibility */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* Focus styles */
+    button:focus,
+    a:focus {
+      outline: 2px solid var(--navy);
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <img src="public/new-logo.png" alt="مختبرات القضـــاة التخصصية" class="logo" onerror="this.style.display='none'" />
+      <h1 class="title">📋 نتائج الفحوصات المخبرية</h1>
+      <p class="subtitle">قم بتوجيه الكاميرا نحو رمز QR الموجود على بطاقة المراجع لقراءة النتائج</p>
+    </div>
+
+    <div class="instructions">
+      <h3>تعليمات الاستخدام:</h3>
+      <ul>
+        <li>تأكد من وجود إضاءة كافية</li>
+        <li>أبقِ الكاميرا ثابتة على رمز QR</li>
+        <li>انتظر حتى يتم قراءة الرمز تلقائياً</li>
+        <li>سيتم توجيهك مباشرة إلى صفحة النتائج</li>
+      </ul>
+    </div>
+
+    <div class="qr-container">
+      <div id="reader"></div>
+      <div id="camera-placeholder" class="camera-placeholder">
+        <div class="camera-icon">📷</div>
+        <p>اضغط على الزر أدناه لبدء تشغيل الكاميرا</p>
+        <button id="start-camera" class="start-camera-btn">
+          <span role="img" aria-label="تشغيل الكاميرا">🎥</span>
+          تشغيل الكاميرا
+        </button>
+      </div>
+    </div>
+
+    <div id="result" class="result">
+      <span id="result-text"></span>
+    </div>
+
+    <div id="loading" class="loading">
+      <span>جاري تحميل النتائج...</span>
+      <span class="spinner"></span>
+    </div>
+
+    <a href="/QCL/" class="back-button">
+      <span role="img" aria-label="العودة">🏠</span>
+      العودة للصفحة الرئيسية
+    </a>
+
+    <div class="footer">
+      <p>© 2024 مختبرات القضـــاة التخصصية - جميع الحقوق محفوظة</p>
+    </div>
+  </div>
+
+  <script>
+    let html5QrcodeScanner = null;
+    let isScanning = false;
+    let isInitialized = false;
+
+    function showError(message) {
+      document.getElementById('result-text').textContent = message;
+      document.getElementById('result').classList.add('show', 'error');
+      document.getElementById('loading').classList.remove('show');
+    }
+
+    function showSuccess(message) {
+      document.getElementById('result-text').textContent = message;
+      document.getElementById('result').classList.add('show');
+      document.getElementById('result').classList.remove('error');
+      document.getElementById('loading').classList.remove('show');
+    }
+
+    function onScanSuccess(decodedText, decodedResult) {
+      if (isScanning) return; // Prevent multiple scans
+      isScanning = true;
+
+      console.log('QR Code scanned:', decodedText);
+
+      // Show loading
+      document.getElementById('loading').classList.add('show');
+      
+      // Hide any previous results
+      document.getElementById('result').classList.remove('show');
+
+      // Validate URL
+      try {
+        const url = new URL(decodedText);
+        if (url.protocol === 'http:' || url.protocol === 'https:') {
+          // Show success message
+          setTimeout(() => {
+            showSuccess("✅ تم قراءة الرابط بنجاح! جاري التوجيه...");
+            
+            // Redirect after showing the message
+            setTimeout(() => {
+              window.location.href = decodedText;
+            }, 1500);
+          }, 1000);
+        } else {
+          throw new Error('Invalid URL protocol');
+        }
+      } catch (error) {
+        console.error('URL validation error:', error);
+        // Show error message
+        setTimeout(() => {
+          showError("❌ الرابط غير صالح. يرجى التأكد من رمز QR.");
+          isScanning = false;
+        }, 1000);
+      }
+    }
+
+    function onScanFailure(error) {
+      // Handle scan failure silently
+      console.log('Scan failed:', error);
+    }
+
+    // Initialize QR Scanner
+    function initScanner() {
+      if (isInitialized) return;
+      
+      try {
+        console.log('Initializing QR Scanner...');
+        
+        // Check if Html5QrcodeScanner is available
+        if (typeof Html5QrcodeScanner === 'undefined') {
+          throw new Error('QR Scanner library not loaded');
+        }
+
+        // Hide placeholder and show reader
+        document.getElementById('camera-placeholder').style.display = 'none';
+        document.getElementById('reader').style.display = 'block';
+
+        html5QrcodeScanner = new Html5QrcodeScanner(
+          "reader", 
+          { 
+            fps: 10, 
+            qrbox: { width: 250, height: 250 },
+            aspectRatio: 1.0
+          }
+        );
+        
+        html5QrcodeScanner.render(onScanSuccess, onScanFailure);
+        isInitialized = true;
+        console.log('QR Scanner initialized successfully');
+        
+      } catch (error) {
+        console.error('Failed to initialize scanner:', error);
+        showError("❌ فشل في تشغيل الكاميرا. يرجى التأكد من السماح بالوصول للكاميرا أو تحديث الصفحة.");
+      }
+    }
+
+    // Initialize when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('Page loaded, setting up QR scanner...');
+      
+      // Show placeholder initially
+      document.getElementById('reader').style.display = 'none';
+      document.getElementById('camera-placeholder').style.display = 'flex';
+      
+      // Add click handler for start camera button
+      document.getElementById('start-camera').addEventListener('click', function() {
+        console.log('Start camera button clicked');
+        initScanner();
+      });
+
+      // Auto-initialize after a delay (for better UX)
+      setTimeout(() => {
+        if (!isInitialized) {
+          console.log('Auto-initializing scanner...');
+          initScanner();
+        }
+      }, 2000);
+    });
+
+    // Handle page visibility changes
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        // Page is hidden, stop scanning
+        if (html5QrcodeScanner) {
+          html5QrcodeScanner.clear();
+        }
+      } else {
+        // Page is visible again, restart scanning
+        setTimeout(() => {
+          if (html5QrcodeScanner && isInitialized) {
+            initScanner();
+          }
+        }, 1000);
+      }
+    });
+
+    // Handle beforeunload to clean up
+    window.addEventListener('beforeunload', function() {
+      if (html5QrcodeScanner) {
+        html5QrcodeScanner.clear();
+      }
+    });
+
+    // Handle errors
+    window.addEventListener('error', function(e) {
+      console.error('Global error:', e.error);
+      showError("❌ حدث خطأ في التطبيق. يرجى تحديث الصفحة والمحاولة مرة أخرى.");
+    });
+  </script>
+</body>
+</html>
