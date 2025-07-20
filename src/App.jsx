@@ -139,6 +139,324 @@ function QRScannerModal({ isOpen, onClose }) {
   );
 }
 
+// Combined Social Media Feeds Component
+function SocialMediaFeeds() {
+  const [facebookLoading, setFacebookLoading] = useState(true);
+  const [facebookError, setFacebookError] = useState(false);
+  const [instagramLoading, setInstagramLoading] = useState(true);
+
+  useEffect(() => {
+    // Load Facebook SDK
+    const loadFacebookSDK = () => {
+      if (window.FB) {
+        setFacebookLoading(false);
+        return;
+      }
+
+      window.fbAsyncInit = function() {
+        window.FB.init({
+          appId: '', // Leave empty for public pages
+          cookie: true,
+          xfbml: true,
+          version: 'v18.0'
+        });
+        setFacebookLoading(false);
+      };
+
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    };
+
+    loadFacebookSDK();
+
+    // Set a timeout for Facebook iframe loading
+    const facebookTimeout = setTimeout(() => {
+      if (facebookLoading) {
+        setFacebookError(true);
+        setFacebookLoading(false);
+      }
+    }, 10000); // 10 seconds timeout
+
+    // Simulate loading for Instagram embed
+    const instagramTimer = setTimeout(() => {
+      setInstagramLoading(false);
+    }, 1000);
+
+    return () => {
+      clearTimeout(facebookTimeout);
+      clearTimeout(instagramTimer);
+    };
+  }, [facebookLoading]);
+
+  const handleFacebookIframeError = () => {
+    setFacebookError(true);
+    setFacebookLoading(false);
+  };
+
+  const handleFacebookIframeLoad = () => {
+    setFacebookLoading(false);
+    setFacebookError(false);
+  };
+
+  const retryFacebookLoad = () => {
+    setFacebookError(false);
+    setFacebookLoading(true);
+    // Reset the loading state after a short delay to trigger the iframe again
+    setTimeout(() => {
+      setFacebookLoading(false);
+    }, 100);
+  };
+
+  return (
+    <section className="social-media-feeds-section" id="social-feeds">
+      <div className="social-media-feeds-container">
+        <div className="social-media-feeds-header">
+          <h2 className="social-media-feeds-title">
+            <span role="img" aria-label="Social Media">📱</span>
+            صفحات التواصل الاجتماعي
+          </h2>
+          <p className="social-media-feeds-subtitle">
+            تابع آخر الأخبار والتحديثات من صفحاتنا على Facebook و Instagram
+          </p>
+        </div>
+
+        <div className="social-media-feeds-grid">
+          {/* Facebook Feed */}
+          <div className="social-feed-card facebook-feed-card">
+            <div className="social-feed-header">
+              <h3 className="social-feed-title">
+                <span role="img" aria-label="Facebook">📘</span>
+                صفحة Facebook
+              </h3>
+              <p className="social-feed-subtitle">
+                تابع آخر الأخبار والتحديثات من صفحتنا على Facebook
+              </p>
+            </div>
+
+            <div className="social-feed-content">
+              {facebookLoading ? (
+                <div className="social-feed-loading">
+                  <div className="social-feed-spinner"></div>
+                  <p>جاري تحميل صفحة Facebook...</p>
+                </div>
+              ) : facebookError ? (
+                <div className="social-feed-embed-container">
+                  <div className="facebook-feed-placeholder">
+                    <div className="facebook-feed-header-placeholder">
+                      <div className="facebook-profile-info">
+                        <div className="facebook-profile-avatar">
+                          <span role="img" aria-label="Facebook Profile">🏥</span>
+                        </div>
+                        <div className="facebook-profile-details">
+                          <h3>مختبرات القضاة التخصصية</h3>
+                          <p>Cons.Labs - مختبرات طبية متخصصة</p>
+                          <div className="facebook-stats">
+                            <span>👍 الإعجابات</span>
+                            <span>👥 المتابعون</span>
+                            <span>📅 آخر تحديث</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="facebook-feed-content">
+                      <div className="facebook-feed-message">
+                        <p>📘 تابعنا على Facebook لمعرفة آخر الأخبار والتحديثات</p>
+                        <p>🔬 نتائج الفحوصات المخبرية وأحدث التقنيات الطبية</p>
+                        <p>💡 نصائح صحية ومعلومات طبية مفيدة</p>
+                        <button 
+                          onClick={retryFacebookLoad}
+                          className="facebook-retry-btn"
+                          style={{
+                            background: '#1877f2',
+                            color: 'white',
+                            border: 'none',
+                            padding: '0.5rem 1rem',
+                            borderRadius: '8px',
+                            cursor: 'pointer',
+                            marginTop: '1rem',
+                            fontSize: '0.9rem',
+                            fontWeight: '600',
+                            transition: 'all 0.3s ease'
+                          }}
+                        >
+                          🔄 إعادة تحميل صفحة Facebook
+                        </button>
+                      </div>
+                      <div className="facebook-feed-preview">
+                        <div className="facebook-post-preview">
+                          <div className="facebook-post-preview-image">
+                            <span role="img" aria-label="Medical Lab">🔬</span>
+                          </div>
+                          <div className="facebook-post-preview-caption">
+                            <p>أحدث الأجهزة الطبية في مختبراتنا</p>
+                            <span>#مختبرات_القضاة #تحاليل_طبية #تقنيات_حديثة</span>
+                          </div>
+                        </div>
+                        <div className="facebook-post-preview">
+                          <div className="facebook-post-preview-image">
+                            <span role="img" aria-label="Medical Team">👨‍⚕️</span>
+                          </div>
+                          <div className="facebook-post-preview-caption">
+                            <p>فريقنا الطبي المتميز يقدم أفضل الخدمات</p>
+                            <span>#فريق_طبي #خدمة_متميزة #رعاية_صحية</span>
+                          </div>
+                        </div>
+                        <div className="facebook-post-preview">
+                          <div className="facebook-post-preview-image">
+                            <span role="img" aria-label="Lab Results">📋</span>
+                          </div>
+                          <div className="facebook-post-preview-caption">
+                            <p>نتائج دقيقة وموثوقة في أسرع وقت ممكن</p>
+                            <span>#نتائج_دقيقة #ثقة_المرضى #سرعة_في_الخدمة</span>
+                          </div>
+                        </div>
+                        <div className="facebook-post-preview">
+                          <div className="facebook-post-preview-image">
+                            <span role="img" aria-label="Health Tips">💡</span>
+                          </div>
+                          <div className="facebook-post-preview-caption">
+                            <p>نصائح صحية يومية لصحة أفضل</p>
+                            <span>#نصائح_صحية #صحة_أفضل #عناية_بالصحة</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="social-feed-embed-container">
+                  <iframe
+                    src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FCons.Labs&tabs=timeline&width=400&height=600&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
+                    width="400"
+                    height="600"
+                    style={{ border: 'none', overflow: 'hidden' }}
+                    scrolling="no"
+                    frameBorder="0"
+                    allowFullScreen={true}
+                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                    title="Facebook Page"
+                    className="social-feed-iframe"
+                    onLoad={handleFacebookIframeLoad}
+                    onError={handleFacebookIframeError}
+                  />
+                </div>
+              )}
+            </div>
+
+            <div className="social-feed-footer">
+              <a 
+                href="https://www.facebook.com/Cons.Labs" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="social-follow-btn facebook-follow-btn"
+              >
+                <span role="img" aria-label="Facebook">📘</span>
+                تابعنا على Facebook
+              </a>
+            </div>
+          </div>
+
+          {/* Instagram Feed */}
+          <div className="social-feed-card instagram-feed-card">
+            <div className="social-feed-header">
+              <h3 className="social-feed-title">
+                <span role="img" aria-label="Instagram">📸</span>
+                صفحة Instagram
+              </h3>
+              <p className="social-feed-subtitle">
+                تابع آخر الأخبار والتحديثات من حسابنا على Instagram
+              </p>
+            </div>
+
+            <div className="social-feed-content">
+              {instagramLoading ? (
+                <div className="social-feed-loading">
+                  <div className="social-feed-spinner"></div>
+                  <p>جاري تحميل صفحة Instagram...</p>
+                </div>
+              ) : (
+                <div className="social-feed-embed-container">
+                  <div className="instagram-feed-placeholder">
+                    <div className="instagram-feed-header-placeholder">
+                      <div className="instagram-profile-info">
+                        <div className="instagram-profile-avatar">
+                          <span role="img" aria-label="Instagram Profile">👨‍🔬</span>
+                        </div>
+                        <div className="instagram-profile-details">
+                          <h3>qudah.labs</h3>
+                          <p>مختبرات القضـــاة التخصصية</p>
+                          <div className="instagram-stats">
+                            <span>📸 المنشورات</span>
+                            <span>👥 المتابعون</span>
+                            <span>👤 يتابع</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="instagram-feed-content">
+                      <div className="instagram-feed-message">
+                        <p>📸 تابعنا على Instagram لمشاهدة أحدث المنشورات والقصص</p>
+                        <p>🔬 صور من مختبراتنا وأحدث التقنيات الطبية</p>
+                        <p>💡 نصائح صحية ومعلومات طبية مفيدة</p>
+                      </div>
+                      <div className="instagram-feed-preview">
+                        <div className="instagram-post-preview">
+                          <div className="instagram-post-preview-image">
+                            <span role="img" aria-label="Medical Lab">🏥</span>
+                          </div>
+                          <div className="instagram-post-preview-caption">
+                            <p>أحدث الأجهزة الطبية في مختبراتنا</p>
+                            <span>#مختبرات_القضاة #تحاليل_طبية</span>
+                          </div>
+                        </div>
+                        <div className="instagram-post-preview">
+                          <div className="instagram-post-preview-image">
+                            <span role="img" aria-label="Medical Team">👨‍⚕️</span>
+                          </div>
+                          <div className="instagram-post-preview-caption">
+                            <p>فريقنا الطبي المتميز</p>
+                            <span>#فريق_طبي #خدمة_متميزة</span>
+                          </div>
+                        </div>
+                        <div className="instagram-post-preview">
+                          <div className="instagram-post-preview-image">
+                            <span role="img" aria-label="Lab Results">📋</span>
+                          </div>
+                          <div className="instagram-post-preview-caption">
+                            <p>نتائج دقيقة وموثوقة</p>
+                            <span>#نتائج_دقيقة #ثقة_المرضى</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div className="social-feed-footer">
+              <a 
+                href="https://www.instagram.com/qudah.labs?utm_source=ig_web_button_share_sheet&igsh=azBoZWZldXIzZGMw" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="social-follow-btn instagram-follow-btn"
+              >
+                <span role="img" aria-label="Instagram">📸</span>
+                تابعنا على Instagram
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 const sliderImages = [
   `${import.meta.env.BASE_URL}slider1.png`,
   `${import.meta.env.BASE_URL}slider2.png`,
@@ -411,6 +729,7 @@ function App() {
               <li><button onClick={() => scrollToSection('mission')} className="nav-link">الرسالة</button></li>
               <li><button onClick={() => scrollToSection('services')} className="nav-link">خدماتنا</button></li>
               <li><button onClick={() => scrollToSection('insurances')} className="nav-link">شركات التأمين</button></li>
+              <li><button onClick={() => scrollToSection('social-feeds')} className="nav-link">التواصل الاجتماعي</button></li>
               <li><button onClick={() => scrollToSection('contact')} className="nav-link">تواصل معنا</button></li>
             </ul>
           </nav>
@@ -594,7 +913,8 @@ function App() {
           </div>
         </section>
 
-
+        {/* Combined Social Media Feeds */}
+        <SocialMediaFeeds />
 
         {/* News and Info Grid Section */}
         <NewsAndInfoGrid />
