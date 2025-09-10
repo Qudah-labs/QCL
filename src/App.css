@@ -2377,16 +2377,10 @@ a:focus {
   cursor: pointer;
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   color: white;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-.audio-control-btn img {
-  width: 24px;
-  height: 24px;
-  object-fit: contain;
-  filter: brightness(0) invert(1);
+  line-height: 1;
 }
 
 .audio-control-btn:hover {

@@ -811,15 +811,7 @@ function App() {
           aria-label={isVideoMuted ? "تشغيل الصوت" : "كتم الصوت"}
           title={isVideoMuted ? "تشغيل الصوت" : "كتم الصوت"}
         >
-          {isVideoMuted ? (
-            <span role="img" aria-label="كتم الصوت">
-              <img src={`${import.meta.env.BASE_URL}icons/Qudah lab web icons/Audio Control/Audio Control-38.png`} alt="كتم الصوت" />
-            </span>
-          ) : (
-            <span role="img" aria-label="تشغيل الصوت">
-              <img src={`${import.meta.env.BASE_URL}icons/Qudah lab web icons/Audio Control/Audio Control-39.png`} alt="تشغيل الصوت" />
-            </span>
-          )}
+          {isVideoMuted ? '🔇' : '🔊'}
         </button>
       </section>
 
