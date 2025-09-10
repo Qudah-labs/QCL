@@ -16,7 +16,7 @@
 }
 
 body {
-  font-family: 'Segoe UI', 'Cairo', 'Arial', sans-serif;
+  font-family: 'Dubai', 'GE SS Two', 'Segoe UI', 'Cairo', 'Arial', sans-serif;
   direction: rtl;
   margin: 0;
   background: var(--white);
@@ -183,6 +183,13 @@ body {
 
 .header-cta span[role="img"] {
   font-size: 1.3em;
+  margin-left: 0.2em;
+}
+
+.header-cta img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
   margin-left: 0.2em;
 }
 
@@ -907,6 +914,13 @@ footer {
   backdrop-filter: blur(10px);
 }
 
+.footer-socials a img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
 .footer-socials a:hover {
   background: rgba(255, 255, 255, 0.2);
   transform: translateY(-3px) scale(1.1);
@@ -1186,6 +1200,13 @@ footer {
   color: var(--navy);
 }
 
+.about-vm-icon img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(13, 48, 83, 0.2));
+}
+
 .about-vm-item h2 {
   color: var(--navy);
   font-size: 1.3em;
@@ -1270,6 +1291,13 @@ footer {
   font-size: 2.5em;
   margin-bottom: 14px;
   color: var(--navy);
+  filter: drop-shadow(0 2px 6px #c0c0c055);
+}
+
+.service-icon img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
   filter: drop-shadow(0 2px 6px #c0c0c055);
 }
 
@@ -1360,6 +1388,13 @@ footer {
   font-size: 2em;
   margin-bottom: 10px;
   color: var(--navy);
+  filter: drop-shadow(0 2px 6px #c0c0c055);
+}
+
+.insurance-icon img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
   filter: drop-shadow(0 2px 6px #c0c0c055);
 }
 
@@ -1810,6 +1845,13 @@ footer {
   margin-bottom: 6px;
 }
 
+.card-icon img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(13, 48, 83, 0.2));
+}
+
 .info-card-header h3 {
   margin: 0;
   font-size: 1.5rem;
@@ -1847,6 +1889,14 @@ footer {
   transition: color 0.2s;
   display: inline-block;
   margin-bottom: 8px;
+}
+
+.info-card-content a img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  margin-left: 8px;
+  vertical-align: middle;
 }
 
 .info-card-content a:hover {
@@ -1969,7 +2019,7 @@ footer {
   align-items: center;
   z-index: 9999;
   color: white;
-  font-family: 'Segoe UI', 'Cairo', 'Arial', sans-serif;
+  font-family: 'Dubai', 'GE SS Two', 'Segoe UI', 'Cairo', 'Arial', sans-serif;
 }
 
 .loading-spinner {
@@ -1989,7 +2039,7 @@ footer {
 
 /* App Container */
 .app-container {
-  font-family: 'Segoe UI', 'Cairo', 'Arial', sans-serif;
+  font-family: 'Dubai', 'GE SS Two', 'Segoe UI', 'Cairo', 'Arial', sans-serif;
   background: var(--white);
   color: var(--gray-dark);
   min-height: 100vh;
@@ -2330,6 +2380,13 @@ a:focus {
   font-size: 1.2rem;
   color: white;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.audio-control-btn img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
 }
 
 .audio-control-btn:hover {

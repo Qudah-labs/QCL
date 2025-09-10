@@ -575,7 +575,9 @@ function App() {
             {/* Locations */}
             <div className="info-card enhanced-card">
               <div className="info-card-header">
-                <span role="img" aria-label="فروعنا" className="card-icon">📍</span>
+                <span role="img" aria-label="فروعنا" className="card-icon">
+                  <img src={`${import.meta.env.BASE_URL}icons/Qudah lab web icons/Locations/Locations-27.png`} alt="فروعنا" />
+                </span>
                 <h3>فروعنا</h3>
               </div>
               <div className="info-card-content locations-list">
@@ -634,33 +636,45 @@ function App() {
             {/* Contact Us */}
             <div className="info-card enhanced-card">
               <div className="info-card-header">
-                <span role="img" aria-label="تواصل معنا" className="card-icon">📞</span>
+                <span role="img" aria-label="تواصل معنا" className="card-icon">
+                  <img src={`${import.meta.env.BASE_URL}icons/Qudah lab web icons/Contact/Contact-29.png`} alt="تواصل معنا" />
+                </span>
                 <h3>تواصل معنا</h3>
               </div>
               <div className="info-card-content">
                 <div className="social-link">
                   <a href="https://www.facebook.com/Cons.Labs" target="_blank" rel="noopener noreferrer">
-                    <span role="img" aria-label="Facebook">📘</span> صفحة الفيسبوك
+                    <span role="img" aria-label="Facebook">
+                      <img src={`${import.meta.env.BASE_URL}icons/Qudah lab web icons/social media/social media-33.png`} alt="صفحة الفيسبوك" />
+                    </span> صفحة الفيسبوك
                   </a>
                 </div>
                 <div className="social-link">
                   <a href="https://www.instagram.com/qudah.labs?utm_source=ig_web_button_share_sheet&igsh=azBoZWZldXIzZGMw" target="_blank" rel="noopener noreferrer">
-                    <span role="img" aria-label="Instagram">📸</span> حساب الإنستاغرام
+                    <span role="img" aria-label="Instagram">
+                      <img src={`${import.meta.env.BASE_URL}icons/Qudah lab web icons/social media/social media-34.png`} alt="حساب الإنستاغرام" />
+                    </span> حساب الإنستاغرام
                   </a>
                 </div>
                 <div className="social-link">
                   <a href="https://www.youtube.com/@QCL2025" target="_blank" rel="noopener noreferrer">
-                    <span role="img" aria-label="YouTube">▶️</span> قناتنا على اليوتيوب
+                    <span role="img" aria-label="YouTube">
+                      <img src={`${import.meta.env.BASE_URL}icons/Qudah lab web icons/social media/social media-35.png`} alt="قناتنا على اليوتيوب" />
+                    </span> قناتنا على اليوتيوب
                   </a>
                 </div>
                 <div className="social-link">
                   <a href="https://wa.me/962799970090" target="_blank" rel="noopener noreferrer">
-                    <span role="img" aria-label="Whatsapp">💬</span> Whatsapp
+                    <span role="img" aria-label="Whatsapp">
+                      <img src={`${import.meta.env.BASE_URL}icons/Qudah lab web icons/WhatsApp/WhatsApp-01.png`} alt="Whatsapp" />
+                    </span> Whatsapp
                   </a>
                 </div>
                 <div className="social-link">
                   <a href="mailto:ceo@labs.qudah.com">
-                    <span role="img" aria-label="Email">📧</span> ceo@labs.qudah.com
+                    <span role="img" aria-label="Email">
+                      <img src={`${import.meta.env.BASE_URL}icons/Qudah lab web icons/Contact/Contact-30.png`} alt="البريد الإلكتروني" />
+                    </span> ceo@labs.qudah.com
                   </a>
                 </div>
               </div>
@@ -668,13 +682,17 @@ function App() {
             {/* Important Links */}
             <div className="info-card enhanced-card">
               <div className="info-card-header">
-                <span role="img" aria-label="روابط مهمة" className="card-icon">🔗</span>
+                <span role="img" aria-label="روابط مهمة" className="card-icon">
+                  <img src={`${import.meta.env.BASE_URL}icons/Qudah lab web icons/Important Links/Important Links-31.png`} alt="روابط مهمة" />
+                </span>
                 <h3>روابط مهمة</h3>
               </div>
               <div className="info-card-content">
                 <div className="important-link">
                   <a href="https://wa.me/962799970090" target="_blank" rel="noopener noreferrer">
-                    <span role="img" aria-label="Home Service">🏠</span> خدمة السحب المنزلي
+                    <span role="img" aria-label="Home Service">
+                      <img src={`${import.meta.env.BASE_URL}icons/Qudah lab web icons/Home Service/Home Service-44.png`} alt="خدمة السحب المنزلي" />
+                    </span> خدمة السحب المنزلي
                   </a>
                 </div>
                 <div className="important-link">
@@ -685,17 +703,23 @@ function App() {
                       setIsQRModalOpen(true);
                     }}
                   >
-                    <span role="img" aria-label="Lab Results">📋</span> نتائج الفحوصات المخبرية
+                    <span role="img" aria-label="Lab Results">
+                      <img src={`${import.meta.env.BASE_URL}icons/Qudah lab web icons/Lab Results/Lab Results-47.png`} alt="نتائج الفحوصات المخبرية" />
+                    </span> نتائج الفحوصات المخبرية
                   </a>
                 </div>
                 <div className="important-link">
                   <a href="https://qudah.yaseer-lis.net/lab-portal/#/login" target="_blank" rel="noopener noreferrer">
-                    <span role="img" aria-label="Lab Portal">🔬</span> بوابة المختبرات
+                    <span role="img" aria-label="Lab Portal">
+                      <img src={`${import.meta.env.BASE_URL}icons/Qudah lab web icons/Lab Portal/Lab Portal-50.png`} alt="بوابة المختبرات" />
+                    </span> بوابة المختبرات
                   </a>
                 </div>
                 <div className="important-link">
                   <a href="https://qudah.yaseer-lis.net/doctors#/" target="_blank" rel="noopener noreferrer">
-                    <span role="img" aria-label="Doctors Portal">👨‍⚕️</span> بوابة الأطباء
+                    <span role="img" aria-label="Doctors Portal">
+                      <img src={`${import.meta.env.BASE_URL}icons/Qudah lab web icons/Doctors Portal/Doctors Portal-53.png`} alt="بوابة الأطباء" />
+                    </span> بوابة الأطباء
                   </a>
                 </div>
               </div>
@@ -736,7 +760,9 @@ function App() {
 
           <div className="header-actions">
             <a href="https://wa.me/962799970090" className="header-cta" target="_blank" rel="noopener noreferrer">
-              <span role="img" aria-label="WhatsApp">💬</span>
+              <span role="img" aria-label="WhatsApp">
+                <img src={`${import.meta.env.BASE_URL}icons/Qudah lab web icons/WhatsApp/WhatsApp-02.png`} alt="احجز الآن" />
+              </span>
               <span className="cta-text">احجز الآن</span>
             </a>
             
@@ -786,9 +812,13 @@ function App() {
           title={isVideoMuted ? "تشغيل الصوت" : "كتم الصوت"}
         >
           {isVideoMuted ? (
-            <span role="img" aria-label="كتم الصوت">🔇</span>
+            <span role="img" aria-label="كتم الصوت">
+              <img src={`${import.meta.env.BASE_URL}icons/Qudah lab web icons/Audio Control/Audio Control-38.png`} alt="كتم الصوت" />
+            </span>
           ) : (
-            <span role="img" aria-label="تشغيل الصوت">🔊</span>
+            <span role="img" aria-label="تشغيل الصوت">
+              <img src={`${import.meta.env.BASE_URL}icons/Qudah lab web icons/Audio Control/Audio Control-39.png`} alt="تشغيل الصوت" />
+            </span>
           )}
         </button>
       </section>
@@ -798,19 +828,25 @@ function App() {
         <section className="about-vm-section" id="about">
           <div className="about-vm-card">
             <div className="about-vm-item" id="about">
-              <div className="about-vm-icon" role="img" aria-label="من نحن">👨‍🔬</div>
+              <div className="about-vm-icon" role="img" aria-label="من نحن">
+                <img src={`${import.meta.env.BASE_URL}icons/Qudah lab web icons/About Us/About Us-04.png`} alt="من نحن" />
+              </div>
               <h2>من نحن</h2>
               <p>مختبر متخصص في تقديم خدمات التحاليل الطبية بدقة واحترافية، مع الالتزام بأعلى معايير الجودة وسرعة الإنجاز.</p>
             </div>
             <div className="about-vm-divider" />
             <div className="about-vm-item" id="vision">
-              <div className="about-vm-icon" role="img" aria-label="الرؤية">🌟</div>
+              <div className="about-vm-icon" role="img" aria-label="الرؤية">
+                <img src={`${import.meta.env.BASE_URL}icons/Qudah lab web icons/Vision/Vision-07.png`} alt="الرؤية" />
+              </div>
               <h2>الرؤية</h2>
               <p>أن تكون مجموعة مختبرات القضـــاة التخصصية صرحاً رائداً ومتميزاً يفضله المراجعون في طلب الرعاية الصحية.</p>
             </div>
             <div className="about-vm-divider" />
             <div className="about-vm-item" id="mission">
-              <div className="about-vm-icon" role="img" aria-label="الرسالة">🎯</div>
+              <div className="about-vm-icon" role="img" aria-label="الرسالة">
+                <img src={`${import.meta.env.BASE_URL}icons/Qudah lab web icons/Mission/Mission-09.png`} alt="الرسالة" />
+              </div>
               <h2>الرسالة</h2>
               <p>تقديم الرعايه الصحيه ذات الجوده العاليه للمراجعين ، ونشر الوعي الصحي بينهم . والمساهمه في اعداد الكوادر المتخصصة في ذلك .</p>
             </div>
@@ -822,32 +858,44 @@ function App() {
           <h2 className="services-title">خدماتنا</h2>
           <div className="services-grid">
             <div className="service-item enhanced-service">
-              <span className="service-icon" role="img" aria-label="فحوصات الدم الشاملة">🩸</span>
+              <span className="service-icon" role="img" aria-label="فحوصات الدم الشاملة">
+                <img src={`${import.meta.env.BASE_URL}icons/Qudah lab web icons/Blood Tests/Blood Tests-11.png`} alt="فحوصات الدم الشاملة" />
+              </span>
               <h3>فحوصات الدم الشاملة</h3>
               <p>تحاليل شاملة لجميع مكونات الدم</p>
             </div>
             <div className="service-item enhanced-service">
-              <span className="service-icon" role="img" aria-label="فحوصات الحساسية">🌾</span>
+              <span className="service-icon" role="img" aria-label="فحوصات الحساسية">
+                <img src={`${import.meta.env.BASE_URL}icons/Qudah lab web icons/Allergy Tests/Allergy Tests-14.png`} alt="فحوصات الحساسية" />
+              </span>
               <h3>فحوصات الحساسية</h3>
               <p>تشخيص دقيق لأنواع الحساسية المختلفة</p>
             </div>
             <div className="service-item enhanced-service">
-              <span className="service-icon" role="img" aria-label="فحوصات ما قبل الزواج">💍</span>
+              <span className="service-icon" role="img" aria-label="فحوصات ما قبل الزواج">
+                <img src={`${import.meta.env.BASE_URL}icons/Qudah lab web icons/Pre-marriage Tests/Pre-marriage Tests-17.png`} alt="فحوصات ما قبل الزواج" />
+              </span>
               <h3>فحوصات ما قبل الزواج</h3>
               <p>فحوصات شاملة لضمان صحة الزوجين</p>
             </div>
             <div className="service-item enhanced-service">
-              <span className="service-icon" role="img" aria-label="فحوصات الأنسجة والأورام">🧬</span>
+              <span className="service-icon" role="img" aria-label="فحوصات الأنسجة والأورام">
+                <img src={`${import.meta.env.BASE_URL}icons/Qudah lab web icons/Tissue & Tumor Tests/Tissue & Tumor Tests-19.png`} alt="فحوصات الأنسجة والأورام" />
+              </span>
               <h3>فحوصات الأنسجة والأورام</h3>
               <p>تحاليل متخصصة للأنسجة والأورام</p>
             </div>
             <div className="service-item enhanced-service">
-              <span className="service-icon" role="img" aria-label="فحوصات الجينات">🧪</span>
+              <span className="service-icon" role="img" aria-label="فحوصات الجينات">
+                <img src={`${import.meta.env.BASE_URL}icons/Qudah lab web icons/Genetic Tests/Genetic Tests-21.png`} alt="فحوصات الجينات" />
+              </span>
               <h3>فحوصات الجينات</h3>
               <p>تحاليل جينية متقدمة</p>
             </div>
             <div className="service-item enhanced-service">
-              <span className="service-icon" role="img" aria-label="دورات التعليم المستمر">🎓</span>
+              <span className="service-icon" role="img" aria-label="دورات التعليم المستمر">
+                <img src={`${import.meta.env.BASE_URL}icons/Qudah lab web icons/Continuing Education/Continuing Education-23.png`} alt="دورات التعليم المستمر" />
+              </span>
               <h3>دورات التعليم المستمر</h3>
               <p>برامج تعليمية متخصصة للكوادر الطبية</p>
             </div>
@@ -859,55 +907,81 @@ function App() {
           <h2 className="insurances-title">شركات التأمين</h2>
           <div className="insurances-grid">
             <div className="insurance-item enhanced-insurance">
-              <span className="insurance-icon" role="img" aria-label="تأمين">🛡️</span>
+              <span className="insurance-icon" role="img" aria-label="تأمين">
+                <img src={`${import.meta.env.BASE_URL}icons/Qudah lab web icons/Insurance/Insurance-68.png`} alt="تأمين" />
+              </span>
               <h3>جامعة اليرموك</h3>
             </div>
             <div className="insurance-item enhanced-insurance">
-              <span className="insurance-icon" role="img" aria-label="تأمين">🛡️</span>
+              <span className="insurance-icon" role="img" aria-label="تأمين">
+                <img src={`${import.meta.env.BASE_URL}icons/Qudah lab web icons/Insurance/Insurance-69.png`} alt="تأمين" />
+              </span>
               <h3>جامعة البلقاء</h3>
             </div>
             <div className="insurance-item enhanced-insurance">
-              <span className="insurance-icon" role="img" aria-label="تأمين">🛡️</span>
+              <span className="insurance-icon" role="img" aria-label="تأمين">
+                <img src={`${import.meta.env.BASE_URL}icons/Qudah lab web icons/Insurance/Insurance-70.png`} alt="تأمين" />
+              </span>
               <h3>جامعة عجلون الوطنية</h3>
             </div>
             <div className="insurance-item enhanced-insurance">
-              <span className="insurance-icon" role="img" aria-label="تأمين">🛡️</span>
+              <span className="insurance-icon" role="img" aria-label="تأمين">
+                <img src={`${import.meta.env.BASE_URL}icons/Qudah lab web icons/Insurance/Insurance-71.png`} alt="تأمين" />
+              </span>
               <h3>نقابة المهندسين</h3>
             </div>
             <div className="insurance-item enhanced-insurance">
-              <span className="insurance-icon" role="img" aria-label="تأمين">🛡️</span>
+              <span className="insurance-icon" role="img" aria-label="تأمين">
+                <img src={`${import.meta.env.BASE_URL}icons/Qudah lab web icons/Insurance/Insurance-72.png`} alt="تأمين" />
+              </span>
               <h3>نقابة المحامين</h3>
             </div>
             <div className="insurance-item enhanced-insurance">
-              <span className="insurance-icon" role="img" aria-label="تأمين">🛡️</span>
+              <span className="insurance-icon" role="img" aria-label="تأمين">
+                <img src={`${import.meta.env.BASE_URL}icons/Qudah lab web icons/Insurance/Insurance-73.png`} alt="تأمين" />
+              </span>
               <h3>نقابة أطباء الأسنان</h3>
             </div>
             <div className="insurance-item enhanced-insurance">
-              <span className="insurance-icon" role="img" aria-label="تأمين">🛡️</span>
+              <span className="insurance-icon" role="img" aria-label="تأمين">
+                <img src={`${import.meta.env.BASE_URL}icons/Qudah lab web icons/Insurance/Insurance-74.png`} alt="تأمين" />
+              </span>
               <h3>نات هيلث</h3>
             </div>
             <div className="insurance-item enhanced-insurance">
-              <span className="insurance-icon" role="img" aria-label="تأمين">🛡️</span>
+              <span className="insurance-icon" role="img" aria-label="تأمين">
+                <img src={`${import.meta.env.BASE_URL}icons/Qudah lab web icons/Insurance/Insurance-75.png`} alt="تأمين" />
+              </span>
               <h3>ميد سيرفس</h3>
             </div>
             <div className="insurance-item enhanced-insurance">
-              <span className="insurance-icon" role="img" aria-label="تأمين">🛡️</span>
+              <span className="insurance-icon" role="img" aria-label="تأمين">
+                <img src={`${import.meta.env.BASE_URL}icons/Qudah lab web icons/Insurance/Insurance-76.png`} alt="تأمين" />
+              </span>
               <h3>الشرق العربي للتأمين</h3>
             </div>
             <div className="insurance-item enhanced-insurance">
-              <span className="insurance-icon" role="img" aria-label="تأمين">🛡️</span>
+              <span className="insurance-icon" role="img" aria-label="تأمين">
+                <img src={`${import.meta.env.BASE_URL}icons/Qudah lab web icons/Insurance/Insurance-77.png`} alt="تأمين" />
+              </span>
               <h3>العربية الأوروبية</h3>
             </div>
             <div className="insurance-item enhanced-insurance">
-              <span className="insurance-icon" role="img" aria-label="تأمين">🛡️</span>
+              <span className="insurance-icon" role="img" aria-label="تأمين">
+                <img src={`${import.meta.env.BASE_URL}icons/Qudah lab web icons/Insurance/Insurance-78.png`} alt="تأمين" />
+              </span>
               <h3>ميديكسا</h3>
             </div>
             <div className="insurance-item enhanced-insurance">
-              <span className="insurance-icon" role="img" aria-label="تأمين">🛡️</span>
+              <span className="insurance-icon" role="img" aria-label="تأمين">
+                <img src={`${import.meta.env.BASE_URL}icons/Qudah lab web icons/Insurance/Insurance-79.png`} alt="تأمين" />
+              </span>
               <h3>أومني كير</h3>
             </div>
             <div className="insurance-item enhanced-insurance">
-              <span className="insurance-icon" role="img" aria-label="تأمين">🛡️</span>
+              <span className="insurance-icon" role="img" aria-label="تأمين">
+                <img src={`${import.meta.env.BASE_URL}icons/Qudah lab web icons/Insurance/Insurance-80.png`} alt="تأمين" />
+              </span>
               <h3>غلوب ميد</h3>
             </div>
           </div>
@@ -929,16 +1003,24 @@ function App() {
           </div>
           <div className="footer-socials">
             <a href="https://www.facebook.com/Cons.Labs" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-              <span role="img" aria-label="Facebook">📘</span>
+              <span role="img" aria-label="Facebook">
+                <img src={`${import.meta.env.BASE_URL}icons/Qudah lab web icons/social media/social media-33.png`} alt="Facebook" />
+              </span>
             </a>
             <a href="https://www.instagram.com/qudah.labs?utm_source=ig_web_button_share_sheet&igsh=azBoZWZldXIzZGMw" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-              <span role="img" aria-label="Instagram">📸</span>
+              <span role="img" aria-label="Instagram">
+                <img src={`${import.meta.env.BASE_URL}icons/Qudah lab web icons/social media/social media-34.png`} alt="Instagram" />
+              </span>
             </a>
             <a href="https://www.youtube.com/@QCL2025" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-              <span role="img" aria-label="YouTube">▶️</span>
+              <span role="img" aria-label="YouTube">
+                <img src={`${import.meta.env.BASE_URL}icons/Qudah lab web icons/social media/social media-35.png`} alt="YouTube" />
+              </span>
             </a>
             <a href="https://wa.me/962799970090" target="_blank" rel="noopener noreferrer" aria-label="Whatsapp">
-              <span role="img" aria-label="Whatsapp">💬</span>
+              <span role="img" aria-label="Whatsapp">
+                <img src={`${import.meta.env.BASE_URL}icons/Qudah lab web icons/WhatsApp/WhatsApp-01.png`} alt="Whatsapp" />
+              </span>
             </a>
           </div>
         </div>
