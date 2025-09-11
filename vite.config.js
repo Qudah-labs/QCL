@@ -9,10 +9,11 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.png', 'new-logo.png', 'slider1.png', 'slider2.png', 'slider3.png', 'slider4.png', 'slider5.png', 'slider6.png'],
+      includeAssets: ['favicon.png', 'new-logo.png', 'images/slider1.png', 'images/slider2.png', 'images/slider3.png', 'images/slider4.png', 'images/slider5.png', 'images/slider6.png', 'videos/hero-video.mp4', 'icons/**/*.png'],
       manifest: {
-        name: 'Qudah Labs',
+        name: 'مختبرات القضـــاة التخصصية',
         short_name: 'QCL',
+        description: 'Qudah Consulting laboratories - Medical Laboratory Services',
         start_url: '/',
         display: 'standalone',
         background_color: '#0d3053',
@@ -29,6 +30,9 @@ export default defineConfig({
             type: 'image/png'
           }
         ]
+      },
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,mp4}']
       }
     })
   ],
@@ -36,6 +40,8 @@ export default defineConfig({
     fs: {
       strict: false,
     },
+    // Ensure static assets are served correctly in development
+    middlewareMode: false,
   },
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],

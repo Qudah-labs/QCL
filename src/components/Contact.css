@@ -1,0 +1,171 @@
+/* Contact Section Styles for Qudah Labs */
+
+.contact {
+  padding: 4rem 0;
+  background: white;
+}
+
+
+
+
+/* Branches Section */
+.branches-section {
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(13, 48, 83, 0.1);
+}
+
+.branches-section h3 {
+  text-align: center;
+  font-size: 2rem;
+  color: #0d3053;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.branches-section h3::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #0d3053, #c0c0c0);
+  border-radius: 2px;
+}
+
+.branches-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.branch-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(13, 48, 83, 0.1);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(13, 48, 83, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.branch-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #0d3053, #c0c0c0);
+}
+
+.branch-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(13, 48, 83, 0.15);
+}
+
+.branch-card h4 {
+  font-size: 1.3rem;
+  color: #0d3053;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.branch-info {
+  margin-bottom: 1.5rem;
+}
+
+.branch-item {
+  margin-bottom: 1rem;
+}
+
+.branch-item strong {
+  color: #0d3053;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.branch-item p {
+  color: #666;
+  margin: 0;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .contact {
+    padding: 3rem 0;
+  }
+  
+  
+  
+  
+  .branches-section {
+    padding: 2rem 1.5rem;
+  }
+  
+  .branches-section h3 {
+    font-size: 1.5rem;
+  }
+  
+  .branches-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .branch-card {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact {
+    padding: 2rem 0;
+  }
+  
+  
+  
+  .branches-section {
+    padding: 1.5rem 1rem;
+  }
+  
+  .branch-card {
+    padding: 1.2rem;
+  }
+  
+  .branch-card h4 {
+    font-size: 1.1rem;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .branch-card,
+  .social-link {
+    transition: none;
+  }
+  
+  .branch-card:hover,
+  .social-link:hover {
+    transform: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .branch-card {
+    border: 2px solid #0d3053;
+  }
+  
+  .contact-item,
+  .social-link {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+}

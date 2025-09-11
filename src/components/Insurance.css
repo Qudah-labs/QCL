@@ -1,0 +1,326 @@
+/* Insurance Section Styles for Qudah Labs */
+
+.insurance {
+  padding: 4rem 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  color: #0d3053;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.section-header h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #0d3053, #c0c0c0);
+  border-radius: 2px;
+}
+
+.section-header p {
+  font-size: 1.2rem;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Insurance Grid */
+.insurance-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.insurance-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(13, 48, 83, 0.1);
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(13, 48, 83, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.insurance-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #0d3053, #c0c0c0);
+}
+
+.insurance-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(13, 48, 83, 0.15);
+}
+
+.company-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 1rem;
+  background: linear-gradient(135deg, #f8f9fa, #ffffff);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+  border: 2px solid rgba(13, 48, 83, 0.1);
+}
+
+.insurance-card:hover .company-icon {
+  transform: scale(1.1);
+}
+
+.company-icon img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.fallback-icon {
+  font-size: 1.5rem;
+  color: #0d3053;
+}
+
+.insurance-card h4 {
+  font-size: 1rem;
+  color: #0d3053;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Insurance Info */
+.insurance-info {
+  background: white;
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(13, 48, 83, 0.1);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.info-card h3 {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #0d3053;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.info-card h3::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #0d3053, #c0c0c0);
+  border-radius: 2px;
+}
+
+.info-card p {
+  color: #666;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.info-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.info-card li {
+  padding: 1rem;
+  background: linear-gradient(135deg, #f8f9fa, #ffffff);
+  border-radius: 10px;
+  color: #555;
+  font-weight: 500;
+  position: relative;
+  padding-right: 2rem;
+  border: 1px solid rgba(13, 48, 83, 0.05);
+  transition: all 0.3s ease;
+}
+
+.info-card li:hover {
+  transform: translateX(-5px);
+  box-shadow: 0 5px 15px rgba(13, 48, 83, 0.1);
+}
+
+.info-card li::before {
+  content: '✓';
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #0d3053;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .insurance {
+    padding: 3rem 0;
+  }
+  
+  .section-header h2 {
+    font-size: 2rem;
+  }
+  
+  .section-header p {
+    font-size: 1.1rem;
+  }
+  
+  .insurance-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .insurance-card {
+    padding: 1.2rem;
+  }
+  
+  .company-icon {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .company-icon img {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .insurance-card h4 {
+    font-size: 0.9rem;
+  }
+  
+  .insurance-info {
+    padding: 2rem 1.5rem;
+  }
+  
+  .info-card h3 {
+    font-size: 1.5rem;
+  }
+  
+  .info-card p {
+    font-size: 1rem;
+  }
+  
+  .info-card ul {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+  
+  .info-card li {
+    padding: 0.8rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .insurance {
+    padding: 2rem 0;
+  }
+  
+  .section-header h2 {
+    font-size: 1.8rem;
+  }
+  
+  .section-header p {
+    font-size: 1rem;
+  }
+  
+  .insurance-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.8rem;
+  }
+  
+  .insurance-card {
+    padding: 1rem;
+  }
+  
+  .company-icon {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .company-icon img {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .insurance-card h4 {
+    font-size: 0.8rem;
+  }
+  
+  .insurance-info {
+    padding: 1.5rem 1rem;
+  }
+  
+  .info-card h3 {
+    font-size: 1.3rem;
+  }
+  
+  .info-card p {
+    font-size: 0.95rem;
+  }
+  
+  .info-card li {
+    padding: 0.7rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .insurance-card,
+  .company-icon,
+  .info-card li {
+    transition: none;
+  }
+  
+  .insurance-card:hover,
+  .info-card li:hover {
+    transform: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .insurance-card,
+  .info-card li {
+    border: 2px solid #0d3053;
+  }
+  
+  .company-icon {
+    border: 2px solid #0d3053;
+  }
+}
