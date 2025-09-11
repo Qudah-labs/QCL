@@ -93,6 +93,12 @@ function doBackgroundSync() {
 
 // Push notifications
 self.addEventListener('push', (event) => {
+  // Check if notifications are supported and permission is granted
+  if (!('Notification' in self) || Notification.permission !== 'granted') {
+    console.log('Notifications not supported or permission not granted');
+    return;
+  }
+
   const options = {
     body: event.data ? event.data.text() : 'New update from مختبرات القضـــاة التخصصية',
     icon: '/QCL/icons/icon-192x192.png',
@@ -118,6 +124,9 @@ self.addEventListener('push', (event) => {
 
   event.waitUntil(
     self.registration.showNotification('مختبرات القضـــاة التخصصية', options)
+      .catch(error => {
+        console.log('Failed to show notification:', error);
+      })
   );
 });
 
