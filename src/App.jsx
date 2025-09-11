@@ -8,7 +8,7 @@ import Contact from './components/Contact'
 import Footer from './components/Footer'
 import QRScanner from './components/QRScanner'
 import FacebookFeed from './components/FacebookFeed'
-import PWAInstall from './components/PWAInstall'
+// import PWAInstall from './components/PWAInstall' // Disabled
 import './App.css'
 
 function App() {
@@ -66,8 +66,8 @@ function App() {
         <QRScanner onClose={() => setIsQRScannerOpen(false)} />
       )}
       
-      {/* PWA Install Banner */}
-      <PWAInstall />
+      {/* PWA Install Prompt - Disabled */}
+      {/* <PWAInstall /> */}
     </div>
   )
 }

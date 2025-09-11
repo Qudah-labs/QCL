@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) navigator.serviceWorker.register('/QCL/dev-sw.js?dev-sw', { scope: '/QCL/', type: 'classic' })
