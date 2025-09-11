@@ -14,20 +14,31 @@ export default defineConfig({
         name: 'مختبرات القضـــاة التخصصية',
         short_name: 'QCL',
         description: 'Qudah Consulting laboratories - Medical Laboratory Services',
-        start_url: '/',
+        start_url: '/QCL/',
+        scope: '/QCL/',
         display: 'standalone',
+        orientation: 'portrait',
         background_color: '#0d3053',
         theme_color: '#0d3053',
+        categories: ['medical', 'health', 'business'],
         icons: [
           {
             src: '/QCL/favicon.png',
             sizes: '192x192',
-            type: 'image/png'
+            type: 'image/png',
+            purpose: 'any maskable'
           },
           {
             src: '/QCL/favicon.png',
             sizes: '512x512',
-            type: 'image/png'
+            type: 'image/png',
+            purpose: 'any maskable'
+          },
+          {
+            src: '/QCL/new-logo.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'any'
           }
         ]
       },

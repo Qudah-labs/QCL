@@ -241,7 +241,13 @@
   
   .info-card li {
     padding: 0.8rem;
+    padding-right: 2.5rem;
     font-size: 0.95rem;
+  }
+  
+  .info-card li::before {
+    right: 0.8rem;
+    font-size: 1.1rem;
   }
 }
 
@@ -295,7 +301,13 @@
   
   .info-card li {
     padding: 0.7rem;
+    padding-right: 2.5rem;
     font-size: 0.9rem;
+  }
+  
+  .info-card li::before {
+    right: 0.8rem;
+    font-size: 1rem;
   }
 }
 

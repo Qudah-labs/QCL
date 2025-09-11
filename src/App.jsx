@@ -8,6 +8,7 @@ import Contact from './components/Contact'
 import Footer from './components/Footer'
 import QRScanner from './components/QRScanner'
 import FacebookFeed from './components/FacebookFeed'
+import PWAInstall from './components/PWAInstall'
 import './App.css'
 
 function App() {
@@ -64,6 +65,9 @@ function App() {
       {isQRScannerOpen && (
         <QRScanner onClose={() => setIsQRScannerOpen(false)} />
       )}
+      
+      {/* PWA Install Banner */}
+      <PWAInstall />
     </div>
   )
 }
