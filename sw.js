@@ -2,8 +2,8 @@ const CACHE_NAME = 'qudah-consulting-labs-v1';
 const urlsToCache = [
   '/QCL/',
   '/QCL/index.html',
-  '/QCL/assets/index.css',
-  '/QCL/assets/index.js',
+  '/QCL/manifest.json',
+  '/QCL/sw.js',
   '/QCL/favicon.png',
   '/QCL/new-logo.png',
   '/QCL/hero-video.mp4',
@@ -16,7 +16,10 @@ self.addEventListener('install', (event) => {
     caches.open(CACHE_NAME)
       .then((cache) => {
         console.log('Opened cache');
-        return cache.addAll(urlsToCache);
+        return cache.addAll(urlsToCache).catch((error) => {
+          console.log('Some resources failed to cache:', error);
+          // Continue even if some resources fail to cache
+        });
       })
       .catch((error) => {
         console.log('Cache install failed:', error);
